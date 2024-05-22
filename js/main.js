@@ -15,12 +15,12 @@
 //    .@@@   @@@&  @@@      %@@@@@@@     @@@.     @@@@   @@@   @@@@@@@   @@@      @@@@@@@@             
 //    .@@@@@@@@@.  @@@@@@@. %@@@  @@@@   @@@@@@@/ @@@@   @@@     @@@@@   @@@@@@@  @@@@ .@@@@           
 
-
+var gGamestate=false
 
 var gMines = 0
 var gBoard
 
-var gLife = 0
+var gLife = 3
 // [[{
 //     minesAroundCount: 0,
 //     isShown: false,
@@ -121,16 +121,20 @@ var gLife = 0
 onInit()
 
 function onInit() {
+    gGamestate=true
     gLife = 3
     buildBoard(8)
     renderBoard(gBoard)
+    
 
 }
 
 
 
 
+
 function buildBoard(size) {
+    if(gLife===0)return
     var difficulty = 0.9
     const board = []
 
@@ -143,6 +147,7 @@ function buildBoard(size) {
                 minesAroundCount: 0,
                 isShown: false,
                 isMine: false,
+                isMarked:false,
 
             }
 
@@ -185,6 +190,7 @@ function setMinesNegsCount(board, cellI, cellJ) {
 
 
 function renderBoard(board) {
+    if(gLife===0)return
     var strHTML = ''
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>'
@@ -192,10 +198,9 @@ function renderBoard(board) {
 
             const cell = board[i][j]
             const isShown = board[i][j].isShown
-            const className = `cell cell-${i}-${j} isShown:${isShown}`
+            const className = `cell cell-${i}-${j} isShown:${isShown} no-right-click`
 
-            strHTML += `<td class="${className}" onclick="onCellClicked(this,${i},${j})">${cell.isShown ? (cell.isMine ? '💣' : cell.minesAroundCount) : ''}</td>`
-
+            strHTML += `<td class="${className}" onclick="onCellClicked(this,${i},${j})"oncontextmenu="onCellMarked(this,${i},${j})">${!cell.isMarked?(cell.isShown ? (cell.isMine ? '💣' : cell.minesAroundCount!==0?cell.minesAroundCount:"") : ''):'🏴'}</td>`
         }
         strHTML += '</tr>'
     }
@@ -206,10 +211,17 @@ function renderBoard(board) {
 }
 
 
+
+function onCellMarked(board,i,j){
+    gBoard[i][j].isMarked=!gBoard[i][j].isMarked
+    renderBoard(gBoard)
+return false
+}
 var firstClick = true
 
 function onCellClicked(cell, i, j) {
-    if (firstClick) {
+if(gBoard[i][j].isMarked){return}
+else{if (firstClick) {
         gBoard[i][j].isShown = true
         mineMaker(i, j)
         // calcAllMines()
@@ -222,14 +234,14 @@ function onCellClicked(cell, i, j) {
 
     else {
         if (gBoard[i][j].isMine) {
+            gBoard[i][j].isShown=true
             if (gLife > 1) {
                 gLife--
                 renderBoard(gBoard)
             }
-            else {gLife--
-                renderBoard(gBoard)
-                document.querySelector('table').style.display = 'none'
-                document.querySelector('.modal').style.display = 'block'
+            else {
+
+               lostGame()
             }
 
         }
@@ -242,7 +254,7 @@ function onCellClicked(cell, i, j) {
         }
     }
 }
-
+}
 function mineMaker(i, j) {
 
     for (var x = 0; x < gBoard.length; x++) {
@@ -260,6 +272,23 @@ function mineMaker(i, j) {
 
 }
 
+function showMines(){
+    for(var i=0;i<gBoard.length;i++){
+        for(var j=0;j<gBoard[0].length;j++){
+            gBoard[i][j].isShown=true
+
+        
+        }
+        
+    }
+    renderBoard()
+}
+
+function lostGame(){
+    // document.querySelector('table').style.display = 'none'
+    // document.querySelector('.modal').style.display = 'block'
+    document.querySelector('.smiley').innerText='🥺'
+}
 
 
 function startNewGame() {
