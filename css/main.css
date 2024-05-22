@@ -1,0 +1,53 @@
+body {
+  text-align: center;
+  color: white;
+  background: rgb(255, 190, 11);
+  background: linear-gradient(
+    29deg,
+    rgba(255, 190, 11, 1) 0%,
+    rgba(251, 86, 7, 1) 25%,
+    rgba(255, 0, 110, 1) 50%,
+    rgba(131, 56, 236, 1) 75%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+table{
+  margin: auto;
+  outline: 20px solid rgb(0, 0, 0);
+  background-color: wheat;
+  color:black;
+}
+
+td{
+  padding:10px;
+  width:20px;
+  height:20px;
+  border: 2px solid black;
+}
+
+
+
+div.modal{
+    position: center;
+    margin:auto;
+    border:3px;
+    border-style: solid;
+    border-color:white;
+    display: none;
+}
+
+.table{
+    background-color: bisque;
+}
+/* 
+.isShown-false{
+  display: none;
+} */
+
+
+footer{
+  margin-top: 100px;
+}
