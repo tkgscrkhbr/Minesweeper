@@ -208,11 +208,15 @@ function renderBoard(board) {
     elBoard.innerHTML = strHTML
 
     document.querySelector('h2').innerText = `${gLife} LIVES LEFT`
+    
 }
 
-
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+});
 
 function onCellMarked(board,i,j){
+    if(gBoard[i][j].isShown)return
     gBoard[i][j].isMarked=!gBoard[i][j].isMarked
     renderBoard(gBoard)
 return false
@@ -250,6 +254,7 @@ else{if (firstClick) {
             //     document.querySelector(".cell-"+i+"-"+j).innerHTML=(cell.isShown?(cell.isMine? '💣' : cell.minesAroundCount):"")
             // document.querySelector(".cell-"+i+"-"+j).classList.add('isShown:true')
             renderBoard(gBoard)
+            checkWin()
 
         }
     }
@@ -300,3 +305,20 @@ function startNewGame() {
 }
 
 
+// function checkWin(){
+//     for(var i=0;i<gBoard.length;i++){
+//         for(var j=0;j<gBoard[0].length;j++){
+//            if (gBoard[i][j].isMarked!==gBoard[i][j].isMine||gBoard[i][j].isMine===gBoard.isShown){break}
+
+
+        
+//         }
+        
+//     }
+//     winGame()
+// }
+
+function winGame(){
+    document.querySelector('.smiley').innerText='😎'
+    gGamestate=false
+}
