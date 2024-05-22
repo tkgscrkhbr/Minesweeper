@@ -123,7 +123,7 @@ onInit()
 function onInit() {
     gGamestate=true
     gLife = 3
-    buildBoard(8)
+    buildBoard(2)
     renderBoard(gBoard)
     
 
@@ -135,7 +135,7 @@ function onInit() {
 
 function buildBoard(size) {
     if(gLife===0)return
-    var difficulty = 0.9
+    var difficulty = 0
     const board = []
 
     for (var i = 0; i < size; i++) {
@@ -254,7 +254,7 @@ else{if (firstClick) {
             //     document.querySelector(".cell-"+i+"-"+j).innerHTML=(cell.isShown?(cell.isMine? '💣' : cell.minesAroundCount):"")
             // document.querySelector(".cell-"+i+"-"+j).classList.add('isShown:true')
             renderBoard(gBoard)
-            checkWin()
+            // checkWin()
 
         }
     }
@@ -301,24 +301,30 @@ function startNewGame() {
     document.querySelector('.modal').style.display = 'none'
     firstClick = true
     onInit()
-
+    document.querySelector('.smiley').innerText='😊'
 }
 
 
 // function checkWin(){
-//     for(var i=0;i<gBoard.length;i++){
-//         for(var j=0;j<gBoard[0].length;j++){
-//            if (gBoard[i][j].isMarked!==gBoard[i][j].isMine||gBoard[i][j].isMine===gBoard.isShown){break}
-
-
-        
+//     if (gGamestate!==false){
+//         for(var i=0;i<gBoard.length;i++){
+//             for(var j=0;j<gBoard[0].length;j++){
+//                 if (!(!gBoard.isMine&&gBoard.isShown)){
+//                     break
+//                 }
+//                 else {
+//                     // console.log('good')
+//                 }
+//             }
 //         }
-        
 //     }
-//     winGame()
+//     else {
+//         winGame()
+//     }
 // }
 
-function winGame(){
-    document.querySelector('.smiley').innerText='😎'
-    gGamestate=false
-}
+
+// function winGame(){
+//     document.querySelector('.smiley').innerText='😎'
+//     gGamestate=false
+// }
