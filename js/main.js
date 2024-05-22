@@ -123,7 +123,7 @@ onInit()
 function onInit() {
     gGamestate=true
     gLife = 3
-    buildBoard(2)
+    buildBoard(7)
     renderBoard(gBoard)
     
 
