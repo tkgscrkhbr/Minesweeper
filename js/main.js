@@ -32,7 +32,7 @@ onInit()
 function onInit() {
   gGamestate = true
   gLife = 3
-  buildBoard(15)
+  buildBoard(6)
   renderBoard(gBoard)
 
 
