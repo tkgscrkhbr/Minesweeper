@@ -72,7 +72,6 @@ function calcAllMines() {
   for (var i = 0; i < gBoard.length; i++) {
     for (var j = 0; j < gBoard[0].length; j++) {
       if (gBoard[i][j].isMine === true) {
-        gMines++
 
       }
       gBoard[i][j].minesAroundCount += setMinesNegsCount(gBoard, i, j)
@@ -154,6 +153,7 @@ if(gLife>0){
   document.querySelector('h2').innerText = `${gLife} LIVES LEFT`
   calcAllNotMines()
   calcAllShown()
+  calcAllMarked()
 
 }
 else{ document.querySelector('h2').innerText = 'You Lost the Game'
@@ -309,7 +309,7 @@ function startNewGame() {
 
 
 function checkWin() {
-  if (gShown===gNotMines&&gGamestate===true) {
+  if (gShown===gNotMines&&gGamestate===true&&gMarked===numMines) {
     winGame()
   }
 
