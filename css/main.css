@@ -143,3 +143,7 @@ footer{
 .feelingspecial{
 display: none;
 }
+
+iframe{
+  width: 100vw;
+}
