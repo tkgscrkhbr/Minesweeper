@@ -27,6 +27,7 @@ var gBoard
 var gShown=0
 var gLife = 3
 var gMarked=0
+const numMines = 2 // Set the desired number of mines here
 onInit()
 
 function onInit() {
@@ -197,7 +198,6 @@ function recursionFunc(cell, i, j) {
 
 function firstClickFunc(cell, i, j) {
   if (firstClick) {
-    const numMines = 5 // Set the desired number of mines here
     mineMaker(gBoard.length, numMines, i, j)
     renderBoard(gBoard)
     renderBoard(gBoard)
