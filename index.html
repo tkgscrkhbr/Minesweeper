@@ -8,8 +8,16 @@
     <!-- <script src="js/util.js"></script> -->
     <title>sprint one</title>
   </head>
+<div class="modal">]
+  
+</div>
+
+
   <h1>Mine Sweeper</h1>
   <h2>Lives:</h2>
+
+  <button class="hint" onclick="hintFunc()"><img src="svg/hintOff2.svg"></button>
+<h5>3 Hints are left</h5>
   <h2 class="smiley" onclick="startNewGame()">😊</h2>
   <br />
   
@@ -21,7 +29,7 @@
   <div class="modal">
     
     <h3 class="user-msg">You Lose!!</h3>
-    <button onclick="startNewGame()">restart</button>
+    <button class="newGameButton" onclick="startNewGame()">restart</button>
   </div>
   
   <script src="js/main.js"></script>

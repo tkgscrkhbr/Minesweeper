@@ -15,6 +15,19 @@ body {
   background-attachment: fixed;
 }
 
+
+.hint{
+  background: none;
+  /* size: 20px; */
+  margin: auto;
+  height: 50%;
+  border: none;
+  
+  
+}
+h5{
+  font-size: larger;
+}
 table{
   margin: auto;
   outline: 20px solid rgb(0, 0, 0);
@@ -48,6 +61,7 @@ div.modal{
 
 .table{
     background-color: bisque;
+    
 }
 /* 
 .isShown-false{
@@ -62,3 +76,13 @@ footer{
 .no-right-click {
   pointer-events: auto;
 } */
+
+.newGameButton {
+  display: inline-block;
+  height: 134px;
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+  width: 104px;
+
+}
