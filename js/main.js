@@ -94,7 +94,7 @@ function calcAllShown(){
   gShown=0
   for (var i = 0; i < gBoard.length; i++) {
     for (var j = 0; j < gBoard[0].length; j++) {
-      if (gBoard[i][j].isShown === true) {
+      if (gBoard[i][j].isShown&&!gBoard[i][j].isMine) {
         gShown++
       }
     }
@@ -105,7 +105,7 @@ function calcAllMarked(){
   gMarked=0
   for (var i = 0; i < gBoard.length; i++) {
     for (var j = 0; j < gBoard[0].length; j++) {
-      if (gBoard[i][j].isMarked === true) {
+      if (gBoard[i][j].isMarked === true||gBoard[i][j].isMine&&gBoard[i][j].isShown) {
         gMarked++
       }
     }
@@ -170,6 +170,7 @@ function onCellMarked(board, i, j) {
   if (gBoard[i][j].isShown) return
   gBoard[i][j].isMarked = !gBoard[i][j].isMarked
   renderBoard(gBoard)
+  checkWin()
 }
 
 
