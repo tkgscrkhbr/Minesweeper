@@ -25,9 +25,8 @@ var gCurrNotMines = 0
 var gMines = 0
 var gBoard
 var gShown=0
-var minesFactor = 0.98
 var gLife = 3
-
+var gMarked=0
 onInit()
 
 function onInit() {
@@ -102,6 +101,18 @@ function calcAllShown(){
   }
 }
 
+function calcAllMarked(){
+  gMarked=0
+  for (var i = 0; i < gBoard.length; i++) {
+    for (var j = 0; j < gBoard[0].length; j++) {
+      if (gBoard[i][j].isMarked === true) {
+        gMarked++
+      }
+    }
+  }
+}
+
+
 
 
 function setMinesNegsCount(board, cellI, cellJ) {
@@ -173,7 +184,7 @@ function recursionFunc(cell, i, j) {
 
       if (gBoard[x][y].minesAroundCount === 0) {
         recursionboolean=true
-        console.log(cell,x,y)
+        // console.log(cell,x,y)
         firstClickFunc(cell, x, y);
         
       }
@@ -186,10 +197,9 @@ function recursionFunc(cell, i, j) {
 
 function firstClickFunc(cell, i, j) {
   if (firstClick) {
-    const numMines = 20; // Set the desired number of mines here
+    const numMines = 5 // Set the desired number of mines here
     mineMaker(gBoard.length, numMines, i, j)
     renderBoard(gBoard)
-    calcAllMines()
     renderBoard(gBoard)
     firstClick = false
 
