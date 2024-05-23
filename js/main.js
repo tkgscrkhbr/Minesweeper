@@ -349,7 +349,7 @@ function hintFunc() {
     isHint = true
   }
   else {
-    currHint.innerHTML = '<img src="svg/hintOff2.svg">'
+    currHint.innerHTML = '<img src="svg/hintoff2.svg">'
     isHint = false
   }
 
