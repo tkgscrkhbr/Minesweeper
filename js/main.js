@@ -334,7 +334,7 @@ function hintFunc() {
   const currHint = document.querySelector('.hint')
 
   if (!isHint) {
-    currHint.innerHTML = '<img src="svg/hinton.svg">'
+    currHint.innerHTML = '<img src="svg/hintOn.svg">'
     isHint = true
   }
   else {
