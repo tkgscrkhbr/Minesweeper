@@ -33,11 +33,19 @@ table{
   outline: 20px solid rgb(0, 0, 0);
   background-color: wheat;
   color:black;
+  
+  transition:2s;
+  -webkit-transition:2s;
+  -moz-transition:2s;
 
 }
 
+.over{
+  transition: 0.5s;
+  background-color:#ffbf7e ;
+}
 .isShown-true{
-
+transition: 0.5s;
   background-color: white;
 }
 
@@ -60,9 +68,12 @@ div.modal{
 }
 
 .table{
-    background-color: bisque;
+    background-color: #ffe4c4;
     
+
+   
 }
+
 /* 
 .isShown-false{
   display: none;

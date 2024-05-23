@@ -135,7 +135,7 @@ function renderBoard(board) {
       const isShown = board[i][j].isShown
       const className = `cell cell-${i}-${j} isShown-${isShown}`
 
-      strHTML += `<td class="${className}" onclick="onCellClicked(this,${i},${j})"oncontextmenu="onCellMarked(this,${i},${j})">${!cell.isMarked ? (cell.isShown ? (cell.isMine ? '💣' : cell.minesAroundCount !== 0 ? cell.minesAroundCount : "") : '') : '🏴'}</td>`
+      strHTML += `<td class="${className}" onclick="onCellClicked(this,${i},${j})"onmouseover="onMouseOver(this,${i},${j})"onmouseout="onMouseOut(this,${i},${j})"oncontextmenu="onCellMarked(this,${i},${j})">${!cell.isMarked ? (cell.isShown ? (cell.isMine ? '💣' : cell.minesAroundCount !== 0 ? cell.minesAroundCount : "") : '') : '🏴'}</td>`
     }
     strHTML += '</tr>'
   }
