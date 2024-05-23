@@ -15,6 +15,8 @@
 //    .@@@@@@@@@.  @@@@@@@. %@@@  @@@@   @@@@@@@/ @@@@   @@@     @@@@@   @@@@@@@  @@@@ .@@@@           
 
 
+
+
 var isHint = false
 var recursionboolean = true
 var firstClick = true
@@ -27,14 +29,22 @@ var gShown = 0
 var gLife = 3
 var gMarked = 0
 var hintsLeft=3
-var bulbState=true
-const numMines = 2 // Set the desired number of mines here
+var bulbState=true 
+var numMines = 2 // Set the desired number of mines here
+var boardSize=4
+
+
+
+
+
+
+
 onInit()
 
 function onInit() {
   gGamestate = true
   gLife = 3
-  buildBoard(6)
+  buildBoard(boardSize)
   renderBoard(gBoard)
 
 
@@ -292,6 +302,7 @@ function showMines() {
 }
 
 function lostGame() {
+  showMines()
   // document.querySelector('table').style.display = 'none'
   // document.querySelector('.modal').style.display = 'block'
   document.querySelector('.smiley').innerText = '🥺'
@@ -301,13 +312,12 @@ function lostGame() {
 
 function startNewGame() {
   document.querySelector('table').style.display = ''
-  document.querySelector('.modal').style.display = 'none'
   firstClick = true
   onInit()
   document.querySelector('.smiley').innerText = '😊'
   gNotMines = 0
   firstClick = true
-  recursionFunc = true
+  recursionboolean = true
   bulbState=false
   isHint=true
   bulbIsShow()
@@ -334,7 +344,7 @@ function hintFunc() {
   const currHint = document.querySelector('.hint')
 
   if (!isHint) {
-    currHint.innerHTML = '<img src="svg/hintOn.svg">'
+    currHint.innerHTML = '<img src="svg/hinton.svg">'
     isHint = true
   }
   else {
