@@ -251,6 +251,7 @@ function onCellClicked(cell, i, j) {
   }
 
   else {
+    if(gBoard[i][j].isMine&&gBoard[i][j].isShown === true)return
     if (gBoard[i][j].isMine) {
       gBoard[i][j].isShown = true
       if (gLife > 1) {

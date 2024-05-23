@@ -101,6 +101,11 @@ font-size: large;
   font-size: large;
 }
 
+.spcl{
+  background-color: white;
+  color:black;
+  font-size: large;
+}
 
 .table{
     background-color: #ffe4c4;
@@ -135,3 +140,6 @@ footer{
 }
 
 
+.feelingspecial{
+display: none;
+}
