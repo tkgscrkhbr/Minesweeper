@@ -204,11 +204,8 @@ function firstClickFunc(cell, i, j) {
 
   if (firstClick) {
     mineMaker(gBoard.length, numMines, i, j)
-    renderBoard(gBoard)
-    renderBoard(gBoard)
     firstClick = false
 
-    renderBoard(gBoard)
     console.log(gBoard)
     renderBoard(gBoard)
     recursionboolean = false
@@ -231,6 +228,7 @@ function firstClickFunc(cell, i, j) {
 
 
 function onCellClicked(cell, i, j) {
+  if(gGamestate){
   if (isHint === true&&!firstClick) {
     showHint(cell, i, j)
     console.log('yes')
@@ -266,8 +264,8 @@ function onCellClicked(cell, i, j) {
       checkWin()
     }
   }
+}else return
 }
-
 
 function mineMaker(size, numMines, firstClickI, firstClickJ) {
   // Reset the mine count
@@ -304,6 +302,7 @@ function showMines() {
 
 function lostGame() {
   showMines()
+  gGamestate=false
   // document.querySelector('table').style.display = 'none'
   // document.querySelector('.modal').style.display = 'block'
   document.querySelector('.smiley').innerText = '🥺'
